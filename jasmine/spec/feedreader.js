@@ -53,24 +53,46 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
-        it('hides the menu element by default', function() {
-            
-        })
-    })
+        let body = document.querySelector('body');
+        let menu = document.querySelector('.menu-icon-link');
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-
+        it('hides the menu element by default', function() {
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+        })
+ 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        describe('the click', function() {
+            beforeEach(function(done){
+                menu.click();
+                done();
+            });
+    
+            it('changes menu visibility when the menu icon is clicked', function() {
+                expect(body.classList.contains('menu-hidden')).toBe(false);
+            })
 
+            afterEach(function(done) {
+                menu.click();
+                done();
+            })
+
+        }) 
+        it('changes menu visibility back when the menu icon is clicked', function() {
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+        })
+    })
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
 
+    })
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
