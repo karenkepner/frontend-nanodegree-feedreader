@@ -92,6 +92,14 @@ $(function() {
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
 
+        beforeEach(function(done) {
+            loadFeed(0, done);
+        })
+        
+        it('should load at least one entry into the .feed container', function() {
+            let feedList = document.querySelectorAll('.feed .entry');
+            expect(feedList.length).toBeGreaterThan(0);
+        })
     })
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -101,9 +109,27 @@ $(function() {
          */
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    describe('New Feed Selection', function() {
+        let feed1;
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+        beforeEach(function(done) {
+            loadFeed(0);
+            feed1 = document.querySelectorAll('.feed .entry');
+            loadFeed(1, done);
+        })
+
+        it('should load a new feed when the content changes', function() {
+            expect(document.querySelectorAll('.feed .entry')).not.toEqual(feed1);
+        })
+
+        afterEach(function(done) {
+            loadFeed(0);
+            done();
+        })
+    })
+
 }());
