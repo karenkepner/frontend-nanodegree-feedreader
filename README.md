@@ -1,3 +1,10 @@
+# Running The Jasmine Tests
+
+The Jasmine tests for this Feedreader Application will run automatically on refresh of the page. To see the test results, scroll to the bottom of the page.
+
+This testing suite has 8 specs. Each spec independently tests a seperate part of the code. If you click on the Options button on the right side of the Jasmine header, you can deselect the "run tests in random order" option and the tests will run in the order they are written. First we check if the RSS feeds are defines, then if they each have a 'url' and 'name' defined. THen we check that the menu is hidden by default. After the menu is found to be hidden on pageload, we check that the menu can be opened and closed on click of the menu bar. Then we check that there are actually links being loaded into the feed. And finally we check for new content being loaded when there is a new url chosen.
+
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
