@@ -55,25 +55,14 @@ $(function() {
             expect(body.classList.contains('menu-hidden')).toBe(true);
         })
  
-         /* Test that the menu shows when the menu icon is clicked. */
         describe('the click', function() {
-            beforeEach(function(done){
+            it('changes menu visibility when the menu icon is clicked', function(done) {
                 menu.click();
-                done();
-            });
-    
-            it('changes menu visibility when the menu icon is clicked', function() {
                 expect(body.classList.contains('menu-hidden')).toBe(false);
-            })
-
-            afterEach(function(done) {
                 menu.click();
+                expect(body.classList.contains('menu-hidden')).toBe(true);
                 done();
             })
-
-        }) 
-        it('changes menu visibility back when the menu icon is clicked', function() {
-            expect(body.classList.contains('menu-hidden')).toBe(true);
         })
     })
 
