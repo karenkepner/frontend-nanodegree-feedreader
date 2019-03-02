@@ -84,21 +84,25 @@ $(function() {
          */
     describe('New Feed Selection', function() {
         let feed1;
+        let feed2;
 
         beforeEach(function(done) {
-            loadFeed(0);
-            feed1 = document.querySelectorAll('.feed .entry');
-            loadFeed(1, done);
+            loadFeed(0, function() {
+                feed0 = document.querySelectorAll('.feed .entry');
+                loadFeed(1, function() {
+                    feed1 = document.querySelectorAll('.feed .entry');
+                    done();
+                });
+            });
         })
 
         it('should load a new feed when the content changes', function() {
-            expect(document.querySelectorAll('.feed .entry')).not.toEqual(feed1);
+            expect(feed1).not.toEqual(feed0);
         })
-
+        //reset the page
         afterEach(function(done) {
             loadFeed(0);
             done();
         })
     })
-
 }());
